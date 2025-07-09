@@ -748,12 +748,14 @@ public struct ImageGenerationCallGeneratingEvent: Decodable {
   public let outputIndex: Int
   public let itemId: String
   public let sequenceNumber: Int?
+  public let revisedPrompt: String?
 
   enum CodingKeys: String, CodingKey {
     case type
     case outputIndex = "output_index"
     case itemId = "item_id"
     case sequenceNumber = "sequence_number"
+    case revisedPrompt = "revised_prompt"
   }
 }
 
@@ -767,6 +769,7 @@ public struct ImageGenerationCallPartialImageEvent: Decodable {
   public let sequenceNumber: Int?
   public let partialImageIndex: Int
   public let partialImageB64: String
+  public let revisedPrompt: String?
 
   enum CodingKeys: String, CodingKey {
     case type
@@ -775,6 +778,7 @@ public struct ImageGenerationCallPartialImageEvent: Decodable {
     case sequenceNumber = "sequence_number"
     case partialImageIndex = "partial_image_index"
     case partialImageB64 = "partial_image_b64"
+    case revisedPrompt = "revised_prompt"
   }
 }
 
@@ -786,12 +790,14 @@ public struct ImageGenerationCallCompletedEvent: Decodable {
   public let outputIndex: Int
   public let itemId: String
   public let sequenceNumber: Int?
-
-  enum CodingKeys: String, CodingKey {
+  public let revisedPrompt: String?
+ 
+    enum CodingKeys: String, CodingKey {
     case type
     case outputIndex = "output_index"
     case itemId = "item_id"
     case sequenceNumber = "sequence_number"
+    case revisedPrompt = "revised_prompt"
   }
 }
 

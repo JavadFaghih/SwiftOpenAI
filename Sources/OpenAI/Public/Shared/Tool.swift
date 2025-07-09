@@ -20,6 +20,9 @@ public enum Tool: Codable {
 
   /// This tool searches the web for relevant results to use in a response
   case webSearch(WebSearchTool)
+    
+  ///https://platform.openai.com/docs/guides/tools-image-generation
+  case generateImage(GenerateImageTool)
 
   public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -36,6 +39,8 @@ public enum Tool: Codable {
       self = try .computerUse(singleValueContainer.decode(ComputerUseTool.self))
     case "web_search_preview", "web_search_preview_2025_03_11":
       self = try .webSearch(singleValueContainer.decode(WebSearchTool.self))
+    case "image_generation_call":
+      self = try .generateImage(singleValueContainer.decode(GenerateImageTool.self))
     default:
       throw DecodingError.dataCorruptedError(
         forKey: .type,
@@ -369,6 +374,66 @@ public enum Tool: Codable {
       case type
     }
   }
+    ///https://platform.openai.com/docs/guides/tools-image-generation
+    public struct GenerateImageTool: Codable {
+        public init(
+            size: String? = "auto",
+            quality: String? = "auto",
+            format: String? = nil,
+            compression: Int? = nil,
+            background: String? = "auto",
+            partialImages: Int? = nil
+        ) {
+            self.size = size
+            self.quality = quality
+            self.format = format
+            self.compression = compression
+            self.background = background
+            self.partialImages = partialImages
+        }
+        
+        /// The type of the generate image tool. Always image_generation.
+        public let type: String = "image_generation"
+        
+        ///Available sizes
+        ///1024x1024 (square)
+        ///1536x1024 (landscape)
+        ///1024x1536 (portrait)
+        ///auto (default)
+        public let size: String?
+        
+        ///Quality options
+        /// low
+        ///medium
+        ///high
+        ///auto (default)
+        public let quality: String?
+        
+        ///Output format
+        ///The Image API returns base64-encoded image data. The default format is png, but you can also request jpeg or webp.
+        public let format: String?
+        
+        ///Compression: Compression level (0-100%) for JPEG and WebP formats
+        public let compression: Int?
+        
+        ///The gpt-image-1 model supports transparent backgrounds. To enable transparency, set the background parameter to transparent.
+        ///It is only supported with the png and webp output formats.
+        ///Transparency works best when setting the quality to medium or high.
+        public let background: String?
+        
+        ///set the number of partial images (1-3) with the partial_images parameter.
+        public let partialImages: Int?
+        
+        enum CodingKeys: String, CodingKey {
+            case type
+            case size
+            case quality
+            case format
+            case compression
+            case background
+            case partialImages = "partial_images"
+        }
+    }
 
   /// This tool searches the web for relevant results to use in a response
   public struct WebSearchTool: Codable {
@@ -484,6 +549,8 @@ public enum Tool: Codable {
     case .computerUse(let tool):
       try container.encode(tool)
     case .webSearch(let tool):
+      try container.encode(tool)
+    case .generateImage(let tool):
       try container.encode(tool)
     }
   }

@@ -39,7 +39,7 @@ public enum Tool: Codable {
       self = try .computerUse(singleValueContainer.decode(ComputerUseTool.self))
     case "web_search_preview", "web_search_preview_2025_03_11":
       self = try .webSearch(singleValueContainer.decode(WebSearchTool.self))
-    case "image_generation_call":
+    case "image_generation":
       self = try .generateImage(singleValueContainer.decode(GenerateImageTool.self))
     default:
       throw DecodingError.dataCorruptedError(

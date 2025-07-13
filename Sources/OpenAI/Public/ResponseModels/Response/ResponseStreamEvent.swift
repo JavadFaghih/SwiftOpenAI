@@ -345,7 +345,7 @@ public struct ResponseQueuedEvent: Decodable {
 public struct OutputItemAddedEvent: Decodable {
   public let type: String
   public let outputIndex: Int
-  public let item: StreamOutputItem
+  public let item: OutputItem
   public let sequenceNumber: Int?
 
   enum CodingKeys: String, CodingKey {
@@ -362,7 +362,7 @@ public struct OutputItemAddedEvent: Decodable {
 public struct OutputItemDoneEvent: Decodable {
   public let type: String
   public let outputIndex: Int
-  public let item: StreamOutputItem
+  public let item: OutputItem
   public let sequenceNumber: Int?
 
   enum CodingKeys: String, CodingKey {

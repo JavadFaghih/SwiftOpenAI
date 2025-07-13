@@ -379,14 +379,14 @@ public enum Tool: Codable {
         public init(
             size: String? = "auto",
             quality: String? = "auto",
-            format: String? = nil,
+            outputFormat: String? = nil,
             compression: Int? = nil,
             background: String? = "auto",
             partialImages: Int? = nil
         ) {
             self.size = size
             self.quality = quality
-            self.format = format
+            self.outputFormat = outputFormat
             self.compression = compression
             self.background = background
             self.partialImages = partialImages
@@ -411,7 +411,7 @@ public enum Tool: Codable {
         
         ///Output format
         ///The Image API returns base64-encoded image data. The default format is png, but you can also request jpeg or webp.
-        public let format: String?
+        public let outputFormat: String?
         
         ///Compression: Compression level (0-100%) for JPEG and WebP formats
         public let compression: Int?
@@ -428,7 +428,7 @@ public enum Tool: Codable {
             case type
             case size
             case quality
-            case format
+            case outputFormat = "output_format"
             case compression
             case background
             case partialImages = "partial_images"

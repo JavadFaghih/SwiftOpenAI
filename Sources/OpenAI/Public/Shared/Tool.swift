@@ -37,7 +37,7 @@ public enum Tool: Codable {
       self = try .function(singleValueContainer.decode(FunctionTool.self))
     case "computer_use_preview":
       self = try .computerUse(singleValueContainer.decode(ComputerUseTool.self))
-    case "web_search_preview", "web_search_preview_2025_03_11":
+    case "web_search", "web_search_preview", "web_search_preview_2025_03_11":
       self = try .webSearch(singleValueContainer.decode(WebSearchTool.self))
     case "image_generation":
       self = try .generateImage(singleValueContainer.decode(GenerateImageTool.self))
@@ -84,6 +84,9 @@ public enum Tool: Codable {
 
   /// The type of the web search tool
   public enum WebSearchType: Codable {
+    
+    case webSearch
+      
     /// Standard web search preview
     case webSearchPreview
 
@@ -102,6 +105,8 @@ public enum Tool: Codable {
         self = .webSearchPreview
       case "web_search_preview_2025_03_11":
         self = .webSearchPreview20250311
+      case "web_search":
+          self = .webSearch
       default:
         self = .custom(value)
       }
@@ -111,6 +116,8 @@ public enum Tool: Codable {
       var container = encoder.singleValueContainer()
 
       switch self {
+      case .webSearch:
+        try container.encode("web_search")
       case .webSearchPreview:
         try container.encode("web_search_preview")
       case .webSearchPreview20250311:
@@ -461,6 +468,8 @@ public enum Tool: Codable {
 
       // Special handling for type
       switch type {
+      case .webSearch:
+        try container.encode("web_search", forKey: .type)
       case .webSearchPreview:
         try container.encode("web_search_preview", forKey: .type)
       case .webSearchPreview20250311:

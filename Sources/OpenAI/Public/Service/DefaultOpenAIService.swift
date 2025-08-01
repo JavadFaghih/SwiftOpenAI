@@ -47,7 +47,8 @@ struct DefaultOpenAIService: OpenAIService {
       openAIEnvironment: openAIEnvironment,
       organizationID: organizationID,
       method: .post,
-      params: parameters)
+      params: parameters,
+    extraHeaders: extraHeaders)
     return try await fetch(debugEnabled: debugEnabled, type: AudioObject.self, with: request)
   }
 
@@ -60,7 +61,8 @@ struct DefaultOpenAIService: OpenAIService {
       openAIEnvironment: openAIEnvironment,
       organizationID: organizationID,
       method: .post,
-      params: parameters)
+      params: parameters,
+    extraHeaders: extraHeaders)
     return try await fetch(debugEnabled: debugEnabled, type: AudioObject.self, with: request)
   }
 
@@ -242,7 +244,8 @@ struct DefaultOpenAIService: OpenAIService {
       openAIEnvironment: openAIEnvironment,
       organizationID: organizationID,
       method: .post,
-      params: parameters)
+      params: parameters,
+    extraHeaders: extraHeaders)
     return try await fetch(debugEnabled: debugEnabled, type: FileObject.self, with: request)
   }
 
@@ -310,7 +313,8 @@ struct DefaultOpenAIService: OpenAIService {
       openAIEnvironment: openAIEnvironment,
       organizationID: organizationID,
       method: .post,
-      params: parameters)
+      params: parameters,
+    extraHeaders: extraHeaders)
     return try await fetch(debugEnabled: debugEnabled, type: OpenAIResponse<ImageObject>.self, with: request)
   }
 
@@ -323,7 +327,8 @@ struct DefaultOpenAIService: OpenAIService {
       openAIEnvironment: openAIEnvironment,
       organizationID: organizationID,
       method: .post,
-      params: parameters)
+      params: parameters,
+    extraHeaders: extraHeaders)
     return try await fetch(debugEnabled: debugEnabled, type: OpenAIResponse<ImageObject>.self, with: request)
   }
 
@@ -350,7 +355,8 @@ struct DefaultOpenAIService: OpenAIService {
       openAIEnvironment: openAIEnvironment,
       organizationID: organizationID,
       method: .post,
-      params: parameters)
+      params: parameters,
+    extraHeaders: extraHeaders)
     return try await fetch(debugEnabled: debugEnabled, type: CreateImageResponse.self, with: request)
   }
 
@@ -363,7 +369,8 @@ struct DefaultOpenAIService: OpenAIService {
       openAIEnvironment: openAIEnvironment,
       organizationID: organizationID,
       method: .post,
-      params: parameters)
+      params: parameters,
+    extraHeaders: extraHeaders)
     return try await fetch(debugEnabled: debugEnabled, type: CreateImageResponse.self, with: request)
   }
 

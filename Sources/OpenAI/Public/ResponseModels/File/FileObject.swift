@@ -12,12 +12,12 @@ public struct FileObject: Decodable {
 
   public init(
     id: String,
-    bytes: Int,
-    createdAt: Int,
-    filename: String,
-    object: String,
-    purpose: String,
-    status: Status,
+    bytes: Int?,
+    createdAt: Int?,
+    filename: String?,
+    object: String?,
+    purpose: String?,
+    status: Status?,
     statusDetails: String?)
   {
     self.id = id
@@ -26,7 +26,7 @@ public struct FileObject: Decodable {
     self.filename = filename
     self.object = object
     self.purpose = purpose
-    self.status = status.rawValue
+    self.status = status?.rawValue
     self.statusDetails = statusDetails
   }
 
@@ -44,13 +44,13 @@ public struct FileObject: Decodable {
   /// The size of the file in bytes.
   public let bytes: Int?
   /// The Unix timestamp (in seconds) for when the file was created.
-  public let createdAt: Int
+  public let createdAt: Int?
   /// The name of the file.
-  public let filename: String
+  public let filename: String?
   /// The object type, which is always "file".
-  public let object: String
+  public let object: String?
   /// The intended purpose of the file. Currently, only "fine-tune" is supported.
-  public let purpose: String
+  public let purpose: String?
   /// Deprecated. The current status of the file, which can be either uploaded, processed, or error.
   @available(*, deprecated, message: "Deprecated")
   public let status: String?

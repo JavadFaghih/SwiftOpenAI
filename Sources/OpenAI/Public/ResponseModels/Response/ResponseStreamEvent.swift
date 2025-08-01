@@ -224,7 +224,7 @@ public enum ResponseStreamEvent: Decodable {
       self = try .mcpListToolsCompleted(MCPListToolsCompletedEvent(from: decoder))
     case "response.mcp_list_tools.failed":
       self = try .mcpListToolsFailed(MCPListToolsFailedEvent(from: decoder))
-    case "response.output_text_annotation.added":
+    case "response.output_text.annotation.added":
       self = try .outputTextAnnotationAdded(OutputTextAnnotationAddedEvent(from: decoder))
     case "response.reasoning.delta":
       self = try .reasoningDelta(ReasoningDeltaEvent(from: decoder))

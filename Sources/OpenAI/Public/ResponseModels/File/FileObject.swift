@@ -9,7 +9,6 @@ import Foundation
 
 /// The [File object](https://platform.openai.com/docs/api-reference/files/object) represents a document that has been uploaded to OpenAI.
 public struct FileObject: Decodable {
-
   public init(
     id: String,
     bytes: Int?,
@@ -71,5 +70,4 @@ public struct FileObject: Decodable {
     case status
     case statusDetails = "status_details"
   }
-
 }

@@ -2,7 +2,6 @@ import XCTest
 @testable import SwiftOpenAI
 
 final class ResponseModelValidationTests: XCTestCase {
-
   // MARK: - Comprehensive Validation Test
 
   func testAllResponseSchemasAreValid() throws {
@@ -44,7 +43,7 @@ final class ResponseModelValidationTests: XCTestCase {
     // Validate all fields are properly decoded
     XCTAssertEqual(responseModel.id, "resp_67ccd2bed1ec8190b14f964abc0542670bb6a6b452d3795b")
     XCTAssertEqual(responseModel.object, "response")
-    XCTAssertEqual(responseModel.createdAt, 1741476542)
+    XCTAssertEqual(responseModel.createdAt, 1_741_476_542)
     XCTAssertEqual(responseModel.status, .completed)
     XCTAssertNil(responseModel.error)
     XCTAssertNil(responseModel.incompleteDetails)

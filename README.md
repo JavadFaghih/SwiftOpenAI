@@ -14,6 +14,8 @@
 
 An open-source Swift package designed for effortless interaction with OpenAI's public API. 
 
+🚀 Now also available as [CLI](https://github.com/jamesrochabrun/SwiftOpenAICLI) and also as [MCP](https://github.com/jamesrochabrun/SwiftOpenAIMCP)
+
 ## Table of Contents
 - [Description](#description)
 - [Getting an API Key](#getting-an-api-key)
@@ -157,9 +159,10 @@ To configure it:
 ```swift
 let apiKey = "your_openai_api_key_here"
 let organizationID = "your_organization_id"
-let configuration = URLSessionConfiguration.default
-configuration.timeoutIntervalForRequest = 360 // e.g., 360 seconds or more.
-let service = OpenAIServiceFactory.service(apiKey: apiKey, organizationID: organizationID, configuration: configuration)
+let session = URLSession.shared
+session.configuration.timeoutIntervalForRequest = 360 // e.g., 360 seconds or more.
+let httpClient = URLSessionHTTPClientAdapter(urlSession: session)
+let service = OpenAIServiceFactory.service(apiKey: apiKey, organizationID: organizationID, httpClient: httpClient)
 ```
 
 That's all you need to begin accessing the full range of OpenAI endpoints.

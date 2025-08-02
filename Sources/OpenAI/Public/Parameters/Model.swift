@@ -9,7 +9,6 @@ import Foundation
 
 /// [Models](https://platform.openai.com/docs/models)
 public enum Model {
-
   case gpt4oAudioPreview
 
   /// O1 models

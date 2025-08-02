@@ -33,5 +33,4 @@ public struct Reasoning: Codable {
     case generateSummary = "generate_summary"
     case summary
   }
-
 }

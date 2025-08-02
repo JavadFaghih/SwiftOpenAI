@@ -8,7 +8,6 @@
 import Foundation
 
 struct LocalModelService: OpenAIService {
-
   public init(
     apiKey: Authorization = .apiKey(""),
     baseURL: String,
@@ -525,5 +524,4 @@ struct LocalModelService: OpenAIService {
   private let apiKey: Authorization
   /// Set this flag to TRUE if you need to print request events in DEBUG builds.
   private let debugEnabled: Bool
-
 }

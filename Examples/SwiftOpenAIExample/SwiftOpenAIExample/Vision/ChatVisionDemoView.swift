@@ -10,7 +10,6 @@ import SwiftOpenAI
 import SwiftUI
 
 struct ChatVisionDemoView: View {
-
   init(service: OpenAIService) {
     _chatProvider = State(initialValue: ChatVisionProvider(service: service))
   }
@@ -114,7 +113,7 @@ struct ChatVisionDemoView: View {
 
   var selectedImagesView: some View {
     HStack(spacing: 0) {
-      ForEach(0..<selectedImages.count, id: \.self) { i in
+      ForEach(0 ..< selectedImages.count, id: \.self) { i in
         selectedImages[i]
           .resizable()
           .frame(width: 60, height: 60)

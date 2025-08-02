@@ -12,8 +12,7 @@ import FoundationNetworking
 
 // MARK: - DefaultOpenAIAzureService
 
-final public class DefaultOpenAIAzureService: OpenAIService {
-
+public final class DefaultOpenAIAzureService: OpenAIService {
   public init(
     azureConfiguration: AzureOpenAIConfiguration,
     httpClient: HTTPClient,
@@ -947,5 +946,4 @@ final public class DefaultOpenAIAzureService: OpenAIService {
 
   /// Assistants API
   private let extraHeaders: [String: String]?
-
 }

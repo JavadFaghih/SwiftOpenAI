@@ -10,7 +10,6 @@ import Foundation
 /// [Create chat completion](https://platform.openai.com/docs/api-reference/chat/create)
 /// For Azure available parameters make sure to visit [Azure API reeference](https://learn.microsoft.com/en-us/azure/ai-services/openai/reference)
 public struct ChatCompletionParameters: Encodable {
-
   public init(
     messages: [Message],
     model: Model,
@@ -72,7 +71,6 @@ public struct ChatCompletionParameters: Encodable {
   }
 
   public struct Message: Encodable {
-
     public init(
       role: Role,
       content: ContentType,
@@ -94,12 +92,10 @@ public struct ChatCompletionParameters: Encodable {
     }
 
     public enum ContentType: Encodable {
-
       case text(String)
       case contentArray([MessageContent])
 
       public enum MessageContent: Encodable, Equatable, Hashable {
-
         case text(String)
         case imageUrl(ImageDetail)
         case inputAudio(AudioDetail)
@@ -193,7 +189,6 @@ public struct ChatCompletionParameters: Encodable {
           case imageUrl = "image_url"
           case inputAudio = "input_audio"
         }
-
       }
 
       public func encode(to encoder: Encoder) throws {
@@ -205,7 +200,6 @@ public struct ChatCompletionParameters: Encodable {
           try container.encode(contentArray)
         }
       }
-
     }
 
     public enum Role: String {
@@ -216,7 +210,6 @@ public struct ChatCompletionParameters: Encodable {
     }
 
     public struct Audio: Encodable {
-
       /// Unique identifier for a previous audio response from the model.
       public let id: String
 
@@ -254,7 +247,6 @@ public struct ChatCompletionParameters: Encodable {
     let toolCalls: [ToolCall]?
     /// Tool call that this message is responding to.
     let toolCallID: String?
-
   }
 
   @available(*, deprecated, message: "Deprecated in favor of ToolChoice.")
@@ -284,12 +276,10 @@ public struct ChatCompletionParameters: Encodable {
       case auto
       case function = "name"
     }
-
   }
 
   /// [Documentation](https://platform.openai.com/docs/api-reference/chat/create#chat-create-tools)
   public struct Tool: Encodable {
-
     /// The type of the tool. Currently, only `function` is supported.
     public let type: String
     /// object
@@ -305,7 +295,6 @@ public struct ChatCompletionParameters: Encodable {
   }
 
   public struct ChatFunction: Codable, Equatable {
-
     public init(
       name: String,
       strict: Bool?,
@@ -327,7 +316,6 @@ public struct ChatCompletionParameters: Encodable {
     public let parameters: JSONSchema?
     /// Defaults to false, Whether to enable strict schema adherence when generating the function call. If set to true, the model will follow the exact schema defined in the parameters field. Only a subset of JSON Schema is supported when strict is true. Learn more about Structured Outputs in the [function calling guide].(https://platform.openai.com/docs/api-reference/chat/docs/guides/function-calling)
     public let strict: Bool?
-
   }
 
   public enum ServiceTier: String, Encodable {
@@ -348,6 +336,10 @@ public struct ChatCompletionParameters: Encodable {
 
     enum CodingKeys: String, CodingKey {
       case includeUsage = "include_usage"
+    }
+
+    public init(includeUsage: Bool) {
+      self.includeUsage = includeUsage
     }
   }
 
@@ -401,7 +393,6 @@ public struct ChatCompletionParameters: Encodable {
 
     public let type: String
     public let content: PredictionContent
-
   }
 
   public enum ReasoningEffort: String, Encodable {
@@ -527,5 +518,4 @@ public struct ChatCompletionParameters: Encodable {
   var stream: Bool? = nil
   /// Options for streaming response. Only set this when you set stream: true
   var streamOptions: StreamOptions?
-
 }

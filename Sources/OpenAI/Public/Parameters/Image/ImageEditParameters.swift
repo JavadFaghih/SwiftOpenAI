@@ -8,9 +8,11 @@
 import Foundation
 #if canImport(UIKit)
 import UIKit
+
 public typealias PlatformImage = UIImage
 #elseif canImport(AppKit)
 import AppKit
+
 public typealias PlatformImage = NSImage
 #endif
 
@@ -18,7 +20,6 @@ public typealias PlatformImage = NSImage
 
 /// [Creates an edited or extended image given an original image and a prompt.](https://platform.openai.com/docs/api-reference/images/createEdit)
 public struct ImageEditParameters: Encodable {
-
   #if canImport(UIKit) || canImport(AppKit)
   public init(
     image: PlatformImage,
@@ -116,13 +117,11 @@ public struct ImageEditParameters: Encodable {
   let responseFormat: String?
   /// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices)
   let user: String?
-
 }
 
 // MARK: MultipartFormDataParameters
 
 extension ImageEditParameters: MultipartFormDataParameters {
-
   public func encode(boundary: String) -> Data {
     MultipartFormDataBuilder(boundary: boundary, entries: [
       .file(paramName: Self.CodingKeys.image.rawValue, fileName: "", fileData: image, contentType: "image/png"),

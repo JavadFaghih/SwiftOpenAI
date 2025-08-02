@@ -2,7 +2,6 @@ import XCTest
 @testable import SwiftOpenAI
 
 final class ModelResponseParameterTests: XCTestCase {
-
   // MARK: - Basic Parameter Tests
 
   func testModelResponseParameterWithStringInput() throws {
@@ -29,7 +28,9 @@ final class ModelResponseParameterTests: XCTestCase {
       content: .text("What's the capital of France?"))
 
     let parameter = ModelResponseParameter(
-      input: .array([.message(inputMessage)]),
+      input: .array([
+        .message(inputMessage),
+      ]),
       model: .gpt4o)
 
     // Test encoding
@@ -46,7 +47,7 @@ final class ModelResponseParameterTests: XCTestCase {
   // MARK: - Complex Input Tests
 
   func testModelResponseParameterWithMultimodalInput() throws {
-    // Create multimodal input with text and image
+    // Create multimodal input with text and image content
     let textContent = TextContent(text: "What's in this image?")
     let imageContent = ImageContent(
       detail: "high",
@@ -60,7 +61,9 @@ final class ModelResponseParameterTests: XCTestCase {
       ]))
 
     let parameter = ModelResponseParameter(
-      input: .array([.message(inputMessage)]),
+      input: .array([
+        .message(inputMessage),
+      ]),
       model: .gpt4o,
       maxOutputTokens: 500,
       temperature: 0.7)
@@ -76,7 +79,8 @@ final class ModelResponseParameterTests: XCTestCase {
     // Verify all fields
     XCTAssertTrue(json.contains("\"text\":\"What's in this image?\""), "Text not found in JSON")
     XCTAssertTrue(
-      json.contains("https:\\/\\/example.com\\/image.jpg") || json.contains("https://example.com/image.jpg"),
+      json.contains("https:\\/\\/example.com\\/image.jpg") ||
+        json.contains("https://example.com/image.jpg"),
       "Image URL not found in JSON")
     XCTAssertTrue(json.contains("\"detail\":\"high\""), "Detail not found in JSON")
     XCTAssertTrue(json.contains("\"max_output_tokens\":500"), "Max output tokens not found in JSON")
@@ -93,8 +97,7 @@ final class ModelResponseParameterTests: XCTestCase {
           properties: [
             "location": JSONSchema(
               type: .string,
-              description: "The city and state"
-            ),
+              description: "The city and state"),
           ],
           required: ["location"]),
         strict: true,

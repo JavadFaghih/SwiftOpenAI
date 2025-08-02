@@ -10,7 +10,6 @@ import SwiftOpenAI
 import SwiftUI
 
 struct ChatStructureOutputToolDemoView: View {
-
   init(service: OpenAIService) {
     chatProvider = .init(service: service)
   }
@@ -82,5 +81,4 @@ struct ChatStructureOutputToolDemoView: View {
   @State private var chatProvider: ChatStructuredOutputToolProvider
   @State private var isLoading = false
   @State private var prompt = ""
-
 }

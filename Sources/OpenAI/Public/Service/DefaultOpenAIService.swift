@@ -8,7 +8,6 @@
 import Foundation
 
 struct DefaultOpenAIService: OpenAIService {
-
   init(
     apiKey: String,
     organizationID: String? = nil,
@@ -1313,5 +1312,4 @@ struct DefaultOpenAIService: OpenAIService {
   private let debugEnabled: Bool
   /// Extra headers for the request.
   private let extraHeaders: [String: String]?
-
 }

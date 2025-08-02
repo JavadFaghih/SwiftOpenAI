@@ -10,7 +10,6 @@ import Foundation
 /// The Response object returned when retrieving a model response
 /// [Get a model response](https://platform.openai.com/docs/api-reference/responses/get)
 public struct ResponseModel: Decodable {
-
   /// The status of the response generation.
   public enum Status: String, Decodable {
     case completed
@@ -22,7 +21,6 @@ public struct ResponseModel: Decodable {
   }
 
   public struct ErrorObject: Decodable {
-
     /// The error code for the response.
     public let code: String
 

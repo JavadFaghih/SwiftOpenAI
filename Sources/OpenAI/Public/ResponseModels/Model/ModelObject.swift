@@ -9,7 +9,6 @@ import Foundation
 
 /// Describes an OpenAI [model](https://platform.openai.com/docs/api-reference/models/object) offering that can be used with the API.
 public struct ModelObject: Decodable {
-
   public struct Permission: Decodable {
     public let id: String?
     public let object: String?
@@ -58,5 +57,4 @@ public struct ModelObject: Decodable {
     case ownedBy = "owned_by"
     case permission
   }
-
 }

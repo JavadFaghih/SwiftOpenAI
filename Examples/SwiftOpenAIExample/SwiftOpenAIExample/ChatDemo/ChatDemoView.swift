@@ -9,7 +9,6 @@ import SwiftOpenAI
 import SwiftUI
 
 struct ChatDemoView: View {
-
   init(service: OpenAIService) {
     _chatProvider = State(initialValue: ChatProvider(service: service))
   }
@@ -108,5 +107,4 @@ struct ChatDemoView: View {
   @State private var isLoading = false
   @State private var prompt = ""
   @State private var selectedSegment = ChatConfig.chatCompeltionStream
-
 }

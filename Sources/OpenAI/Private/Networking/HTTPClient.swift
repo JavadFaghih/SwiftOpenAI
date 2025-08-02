@@ -63,7 +63,6 @@ public struct HTTPRequest {
   var headers: [String: String]
   /// The body of the request, if any
   var body: Data?
-
 }
 
 // MARK: - HTTPResponse

@@ -12,7 +12,6 @@ private let aiproxySecureDelegate = AIProxyCertificatePinningDelegate()
 // MARK: - AIProxyService
 
 struct AIProxyService: OpenAIService {
-
   /// Initializes an instance of the OpenAI service with the required configurations.
   ///
   /// - Parameters:
@@ -1329,6 +1328,5 @@ struct AIProxyService: OpenAIService {
 
   /// [organization](https://platform.openai.com/docs/api-reference/organization-optional)
   private let organizationID: String?
-
 }
 #endif

@@ -9,7 +9,6 @@ import SwiftOpenAI
 import SwiftUI
 
 struct OptionsListView: View {
-
   /// https://platform.openai.com/docs/api-reference
   enum APIOption: String, CaseIterable, Identifiable {
     case audio = "Audio"
@@ -93,5 +92,4 @@ struct OptionsListView: View {
   }
 
   @State private var selection: APIOption? = nil
-
 }

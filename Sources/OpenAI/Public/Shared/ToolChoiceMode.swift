@@ -11,7 +11,6 @@ import Foundation
 
 /// Controls which (if any) tool is called by the model.
 public enum ToolChoiceMode: Codable {
-
   /// Means the model will not call any tool and instead generates a message.
   case none
 
@@ -70,7 +69,6 @@ public enum ToolChoiceMode: Codable {
       try container.encode(tool)
     }
   }
-
 }
 
 // MARK: - HostedToolType

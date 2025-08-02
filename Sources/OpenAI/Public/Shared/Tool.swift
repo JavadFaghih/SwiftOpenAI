@@ -126,7 +126,6 @@ public enum Tool: Codable {
         try container.encode(value)
       }
     }
-
   }
 
   /// A tool that searches for relevant content from uploaded files
@@ -237,7 +236,6 @@ public enum Tool: Codable {
       case type
       case value
     }
-
   }
 
   /// Filter value type (string, number, or boolean)
@@ -274,7 +272,6 @@ public enum Tool: Codable {
         try container.encode(value)
       }
     }
-
   }
 
   /// Combine multiple filters using and or or
@@ -487,7 +484,6 @@ public enum Tool: Codable {
       case searchContextSize = "search_context_size"
       case userLocation = "user_location"
     }
-
   }
 
   /// Approximate location parameters for the search
@@ -544,7 +540,6 @@ public enum Tool: Codable {
       case region
       case timezone
     }
-
   }
 
   public func encode(to encoder: Encoder) throws {

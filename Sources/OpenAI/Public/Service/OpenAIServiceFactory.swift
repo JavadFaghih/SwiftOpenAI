@@ -8,7 +8,6 @@
 import Foundation
 
 public class OpenAIServiceFactory {
-
   /// Creates and returns an instance of `OpenAIService`.
   ///
   /// - Parameters:
@@ -63,6 +62,7 @@ public class OpenAIServiceFactory {
   }
 
   #if !os(Linux)
+
   // MARK: AIProxy
 
   /// Creates and returns an instance of `OpenAIService` for use with aiproxy.pro

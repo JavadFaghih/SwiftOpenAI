@@ -125,6 +125,5 @@ public class AsyncHTTPClientAdapter: HTTPClient {
     }
     return result
   }
-
 }
 #endif

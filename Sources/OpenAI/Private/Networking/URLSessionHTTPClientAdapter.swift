@@ -7,7 +7,6 @@ import FoundationNetworking
 #if !os(Linux)
 /// Adapter that implements HTTPClient protocol using URLSession
 public class URLSessionHTTPClientAdapter: HTTPClient {
-
   /// Initializes a new URLSessionHTTPClientAdapter with the provided URLSession
   /// - Parameter urlSession: The URLSession instance to use. Defaults to `URLSession.shared`.
   public init(urlSession: URLSession = .shared) {

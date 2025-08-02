@@ -10,7 +10,6 @@ import SwiftUI
 
 @Observable
 class ChatVisionProvider {
-
   // MARK: - Initializer
 
   init(service: OpenAIService) {
@@ -64,6 +63,7 @@ class ChatVisionProvider {
   }
 
   // MARK: - Private Properties
+
   private let service: OpenAIService
 
   /// Accumulates the streamed message content for real-time display updates in the UI.

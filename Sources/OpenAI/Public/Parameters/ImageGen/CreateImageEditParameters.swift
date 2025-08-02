@@ -11,7 +11,6 @@ import Foundation
 /// Creates an edited or extended image given one or more source images and a prompt.
 /// This endpoint only supports `gpt-image-1` and `dall-e-2`.
 public struct CreateImageEditParameters: Encodable {
-
   #if canImport(UIKit) || canImport(AppKit)
   /// Creates parameters for editing a single image (compatible with both dall-e-2 and gpt-image-1)
   /// - Parameters:
@@ -218,13 +217,11 @@ public struct CreateImageEditParameters: Encodable {
 
   /// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
   let user: String?
-
 }
 
 // MARK: MultipartFormDataParameters
 
 extension CreateImageEditParameters: MultipartFormDataParameters {
-
   public func encode(boundary: String) -> Data {
     var entries: [MultipartFormDataEntry] = []
 

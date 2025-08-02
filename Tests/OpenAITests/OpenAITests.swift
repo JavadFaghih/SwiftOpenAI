@@ -2,7 +2,6 @@ import XCTest
 @testable import SwiftOpenAI
 
 final class OpenAITests: XCTestCase {
-
   /// OpenAI is loose with their API contract, unfortunately.
   /// Here we test that `tool_choice` is decodable from a string OR an object,
   /// which is required for deserializing responses from assistants:
@@ -183,7 +182,7 @@ final class OpenAITests: XCTestCase {
     // Test basic properties
     XCTAssertEqual(responseModel.id, "resp_67ccd2bed1ec8190b14f964abc0542670bb6a6b452d3795b")
     XCTAssertEqual(responseModel.object, "response")
-    XCTAssertEqual(responseModel.createdAt, 1741476542)
+    XCTAssertEqual(responseModel.createdAt, 1_741_476_542)
     XCTAssertEqual(responseModel.status, .completed)
     XCTAssertNil(responseModel.error)
     XCTAssertNil(responseModel.incompleteDetails)
@@ -306,7 +305,7 @@ final class OpenAITests: XCTestCase {
     // Test basic properties
     XCTAssertEqual(responseModel.id, "resp_67ccd3a9da748190baa7f1570fe91ac604becb25c45c1d41")
     XCTAssertEqual(responseModel.object, "response")
-    XCTAssertEqual(responseModel.createdAt, 1741476777)
+    XCTAssertEqual(responseModel.createdAt, 1_741_476_777)
     XCTAssertEqual(responseModel.status, .completed)
     XCTAssertNil(responseModel.error)
     XCTAssertNil(responseModel.incompleteDetails)
@@ -464,7 +463,7 @@ final class OpenAITests: XCTestCase {
     // Test basic properties
     XCTAssertEqual(responseModel.id, "resp_67ccf18ef5fc8190b16dbee19bc54e5f087bb177ab789d5c")
     XCTAssertEqual(responseModel.object, "response")
-    XCTAssertEqual(responseModel.createdAt, 1741484430)
+    XCTAssertEqual(responseModel.createdAt, 1_741_484_430)
     XCTAssertEqual(responseModel.status, .completed)
     XCTAssertNil(responseModel.error)
     XCTAssertNil(responseModel.incompleteDetails)
@@ -662,7 +661,7 @@ final class OpenAITests: XCTestCase {
     // Test basic properties
     XCTAssertEqual(responseModel.id, "resp_67ccf4c55fc48190b71bd0463ad3306d09504fb6872380d7")
     XCTAssertEqual(responseModel.object, "response")
-    XCTAssertEqual(responseModel.createdAt, 1741485253)
+    XCTAssertEqual(responseModel.createdAt, 1_741_485_253)
     XCTAssertEqual(responseModel.status, .completed)
     XCTAssertNil(responseModel.error)
     XCTAssertNil(responseModel.incompleteDetails)
@@ -1016,7 +1015,7 @@ final class OpenAITests: XCTestCase {
     // Test basic properties
     XCTAssertEqual(responseModel.id, "resp_67ca09c5efe0819096d0511c92b8c890096610f474011cc0")
     XCTAssertEqual(responseModel.object, "response")
-    XCTAssertEqual(responseModel.createdAt, 1741294021)
+    XCTAssertEqual(responseModel.createdAt, 1_741_294_021)
     XCTAssertEqual(responseModel.status, .completed)
 
     // Test tool configuration
@@ -1113,7 +1112,7 @@ final class OpenAITests: XCTestCase {
     // Test basic properties
     XCTAssertEqual(responseModel.id, "resp_67ccd7eca01881908ff0b5146584e408072912b2993db808")
     XCTAssertEqual(responseModel.object, "response")
-    XCTAssertEqual(responseModel.createdAt, 1741477868)
+    XCTAssertEqual(responseModel.createdAt, 1_741_477_868)
     XCTAssertEqual(responseModel.status, .completed)
     XCTAssertEqual(responseModel.model, "o1-2024-12-17")
 

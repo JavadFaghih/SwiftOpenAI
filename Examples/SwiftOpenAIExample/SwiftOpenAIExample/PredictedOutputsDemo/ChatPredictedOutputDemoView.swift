@@ -13,7 +13,6 @@ import SwiftUI
 
 /// https://platform.openai.com/docs/guides/predicted-outputs
 struct ChatPredictedOutputDemoView: View {
-
   init(service: OpenAIService) {
     chatProvider = ChatProvider(service: service)
   }
@@ -79,7 +78,6 @@ struct ChatPredictedOutputDemoView: View {
   @State private var chatProvider: ChatProvider
   @State private var isLoading = false
   @State private var prompt = ""
-
 }
 
 let systemMessage = """

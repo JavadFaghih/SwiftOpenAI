@@ -16,7 +16,6 @@ import AppKit
 
 /// [Creates a variation of a given image.](https://platform.openai.com/docs/api-reference/images/createVariation)
 public struct ImageVariationParameters: Encodable {
-
   #if canImport(UIKit) || canImport(AppKit)
   public init(
     image: PlatformImage,
@@ -97,13 +96,11 @@ public struct ImageVariationParameters: Encodable {
   let size: String?
   /// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](https://platform.openai.com/docs/guides/safety-best-practices)
   let user: String?
-
 }
 
 // MARK: MultipartFormDataParameters
 
 extension ImageVariationParameters: MultipartFormDataParameters {
-
   public func encode(boundary: String) -> Data {
     MultipartFormDataBuilder(boundary: boundary, entries: [
       .file(paramName: Self.CodingKeys.image.rawValue, fileName: "", fileData: image, contentType: "image/png"),

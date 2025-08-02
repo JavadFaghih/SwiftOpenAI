@@ -72,5 +72,4 @@ public enum FormatType: Codable {
     case schema
     case name
   }
-
 }

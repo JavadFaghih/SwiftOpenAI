@@ -9,7 +9,6 @@ import SwiftOpenAI
 import SwiftUI
 
 struct ChatStreamFluidConversationDemoView: View {
-
   init(service: OpenAIService) {
     _chatProvider = State(initialValue: ChatFluidConversationProvider(service: service))
   }
@@ -89,5 +88,4 @@ struct ChatStreamFluidConversationDemoView: View {
   @State private var isLoading = false
   @State private var prompt = ""
   @State private var selectedModel = GPTModel.gpt3dot5
-
 }

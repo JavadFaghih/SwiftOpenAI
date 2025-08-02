@@ -112,7 +112,6 @@ let responseFormatSchema = JSONSchemaResponseFormat(
 // )
 
 struct ChatStructuredOutputDemoView: View {
-
   init(service: OpenAIService) {
     _chatProvider = State(initialValue: ChatStructuredOutputProvider(service: service))
   }
@@ -215,5 +214,4 @@ struct ChatStructuredOutputDemoView: View {
   @State private var isLoading = false
   @State private var prompt = ""
   @State private var selectedSegment = ChatConfig.chatCompeltionStream
-
 }

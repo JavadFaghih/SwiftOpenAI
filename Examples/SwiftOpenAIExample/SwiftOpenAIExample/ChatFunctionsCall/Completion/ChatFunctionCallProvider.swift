@@ -11,7 +11,6 @@ import SwiftUI
 // MARK: - FunctionCallDefinition
 
 enum FunctionCallDefinition: String, CaseIterable {
-
   case createImage = "create_image"
 
   // Add more functions if needed, parallel function calling is supported.
@@ -38,7 +37,6 @@ enum FunctionCallDefinition: String, CaseIterable {
 
 @Observable
 class ChatFunctionCallProvider {
-
   // MARK: - Initializer
 
   init(service: OpenAIService) {
@@ -249,7 +247,6 @@ class ChatFunctionCallProvider {
 }
 
 extension String {
-
   fileprivate func toDictionary() -> [String: Any]? {
     guard let jsonData = data(using: .utf8) else {
       print("Failed to convert JSON string to Data.")
@@ -258,7 +255,7 @@ extension String {
 
     do {
       return try JSONSerialization.jsonObject(with: jsonData, options: []) as? [String: Any]
-    } catch let error {
+    } catch {
       print("Failed to deserialize JSON: \(error.localizedDescription)")
       return nil
     }

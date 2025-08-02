@@ -17,7 +17,6 @@ import AppKit
 /// Creates a variation of a given image.
 /// This endpoint only supports `dall-e-2`.
 public struct CreateImageVariationParameters: Encodable {
-
   #if canImport(UIKit) || canImport(AppKit)
   /// Creates parameters for generating variations of an image
   /// - Parameters:
@@ -123,13 +122,11 @@ public struct CreateImageVariationParameters: Encodable {
 
   /// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse.
   let user: String?
-
 }
 
 // MARK: MultipartFormDataParameters
 
 extension CreateImageVariationParameters: MultipartFormDataParameters {
-
   public func encode(boundary: String) -> Data {
     var entries: [MultipartFormDataEntry] = []
 

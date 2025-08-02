@@ -48,7 +48,6 @@ public enum InputType: Codable {
       try container.encode(items)
     }
   }
-
 }
 
 // MARK: - InputItem
@@ -139,7 +138,6 @@ public struct InputMessage: Codable {
 
   /// The unique ID of the message (for assistant messages with response IDs)
   public let id: String?
-
 }
 
 // MARK: - MessageContent
@@ -398,7 +396,6 @@ public struct OutputTextContent: Codable {
     case annotations
     case type
   }
-
 }
 
 // MARK: - RefusalContent
@@ -442,7 +439,6 @@ public struct OutputMessage: Codable {
 
   /// The type of the output message. Always "message"
   public let type: String
-
 }
 
 // MARK: - FileSearchToolCall

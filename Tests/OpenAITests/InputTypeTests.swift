@@ -2,7 +2,6 @@ import XCTest
 @testable import SwiftOpenAI
 
 final class InputTypeTests: XCTestCase {
-
   // MARK: - Basic InputType Tests
 
   func testStringInput() throws {

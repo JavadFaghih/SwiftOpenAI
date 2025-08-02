@@ -9,7 +9,6 @@ import Foundation
 
 /// [Generates audio from the input text.](https://platform.openai.com/docs/api-reference/audio/createSpeech)
 public struct AudioSpeechParameters: Encodable {
-
   public init(
     model: TTSModel,
     input: String,
@@ -78,5 +77,4 @@ public struct AudioSpeechParameters: Encodable {
   let responseFormat: String?
   /// Defaults to 1,  The speed of the generated audio. Select a value from 0.25 to 4.0. 1.0 is the default.
   let speed: Double?
-
 }

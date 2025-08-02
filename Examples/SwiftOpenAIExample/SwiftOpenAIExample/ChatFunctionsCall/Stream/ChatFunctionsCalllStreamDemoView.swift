@@ -9,7 +9,6 @@ import SwiftOpenAI
 import SwiftUI
 
 struct ChatFunctionsCalllStreamDemoView: View {
-
   init(service: OpenAIService) {
     _chatProvider = State(initialValue: ChatFunctionsCallStreamProvider(service: service))
   }
@@ -81,5 +80,4 @@ struct ChatFunctionsCalllStreamDemoView: View {
   @State private var isLoading = false
   @State private var prompt = ""
   @State private var chatProvider: ChatFunctionsCallStreamProvider
-
 }

@@ -1,5 +1,5 @@
 //
-//  CreateAssistantParameters.swift
+//  AssistantParameters.swift
 //
 //
 //  Created by James Rochabrun on 11/15/23.
@@ -10,7 +10,6 @@ import Foundation
 /// Create an [assistant](https://platform.openai.com/docs/api-reference/assistants/createAssistant) with a model and instructions.
 /// Modifies an [assistant](https://platform.openai.com/docs/api-reference/assistants/modifyAssistant).
 public struct AssistantParameters: Encodable {
-
   public init(
     action: Action? = nil,
     name: String? = nil,
@@ -121,5 +120,4 @@ public struct AssistantParameters: Encodable {
     case responseFormat = "response_format"
     case toolResources = "tool_resources"
   }
-
 }

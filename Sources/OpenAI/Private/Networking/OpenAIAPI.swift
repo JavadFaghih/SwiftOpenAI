@@ -10,7 +10,6 @@ import Foundation
 // MARK: - OpenAIAPI
 
 enum OpenAIAPI {
-
   case assistant(AssistantCategory) // https://platform.openai.com/docs/api-reference/assistants
   case audio(AudioCategory) // https://platform.openai.com/docs/api-reference/audio
   case chat /// https://platform.openai.com/docs/api-reference/chat
@@ -131,7 +130,6 @@ enum OpenAIAPI {
     case retrieve(vectorStoreID: String, batchID: String)
     case cancel(vectorStoreID: String, batchID: String)
     case list(vectorStoreID: String, batchID: String)
-
   }
 
   enum ResponseCategory {
@@ -143,7 +141,6 @@ enum OpenAIAPI {
 // MARK: Endpoint
 
 extension OpenAIAPI: Endpoint {
-
   /// Builds the final path that includes:
   ///
   ///   - optional proxy path (e.g. "/my-proxy")

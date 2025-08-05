@@ -16,7 +16,7 @@ import Foundation
 //  }
 // }
 
-public struct OpenAIErrorResponse: Decodable {
+public struct OpenAIErrorResponse: Decodable, LocalizedError {
   public let error: Error
 
   public struct Error: Decodable {
@@ -25,4 +25,17 @@ public struct OpenAIErrorResponse: Decodable {
     public let param: String?
     public let code: String?
   }
+    
+    public var errorDescription: String? {
+        return error.message
+    }
+}
+
+public struct VaporErrorResponse: Decodable, LocalizedError {
+    public let error: Bool
+    public let reason: String
+    
+    public var errorDescription: String? {
+        return reason
+    }
 }

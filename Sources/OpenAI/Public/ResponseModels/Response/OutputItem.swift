@@ -402,8 +402,12 @@ public enum OutputItem: Decodable {
     /// The type of the image generation call. Always "image_generation_call"
     public let type: String
 
+    public let revisedPrompt: String?
+
     enum CodingKeys: String, CodingKey {
       case id, result, status, type
+      case revisedPrompt = "revised_prompt"
+
     }
   }
 

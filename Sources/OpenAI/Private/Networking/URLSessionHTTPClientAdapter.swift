@@ -70,7 +70,7 @@ public class URLSessionHTTPClientAdapter: HTTPClient {
   /// - Parameter request: Our HTTPRequest
   /// - Returns: URLRequest
   private func createURLRequest(from request: HTTPRequest) throws -> URLRequest {
-    var urlRequest = URLRequest(url: request.url)
+    var urlRequest = URLRequest(url: request.url, timeoutInterval: 300)
     urlRequest.httpMethod = request.method.rawValue
 
     for (key, value) in request.headers {

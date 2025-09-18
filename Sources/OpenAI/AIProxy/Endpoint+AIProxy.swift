@@ -46,7 +46,7 @@ extension Endpoint {
   {
     let finalPath = path(in: openAIEnvironment)
     var request = URLRequest(url: urlComponents(serviceURL: openAIEnvironment.baseURL, path: finalPath, queryItems: queryItems)
-      .url!)
+      .url!, timeoutInterval: 300)
     request.addValue("application/json", forHTTPHeaderField: "Content-Type")
     request.addValue(aiproxyPartialKey, forHTTPHeaderField: "aiproxy-partial-key")
     if let organizationID {
@@ -85,7 +85,7 @@ extension Endpoint {
   {
     let finalPath = path(in: openAIEnvironment)
     var request = URLRequest(url: urlComponents(serviceURL: openAIEnvironment.baseURL, path: finalPath, queryItems: queryItems)
-      .url!)
+      .url!, timeoutInterval: 300)
     request.httpMethod = method.rawValue
     request.addValue(aiproxyPartialKey, forHTTPHeaderField: "aiproxy-partial-key")
     if let organizationID {

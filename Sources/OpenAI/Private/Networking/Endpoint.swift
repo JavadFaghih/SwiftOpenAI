@@ -46,7 +46,7 @@ extension Endpoint {
         guard let url = components.url else {
             throw URLError(.badURL)
         }
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url, timeoutInterval: 300)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue(apiKey.value, forHTTPHeaderField: apiKey.headerField)
         if let organizationID {
@@ -82,7 +82,7 @@ extension Endpoint {
         guard let url = components.url else {
             throw URLError(.badURL)
         }
-        var request = URLRequest(url: url)
+        var request = URLRequest(url: url, timeoutInterval: 300)
         request.httpMethod = method.rawValue
         let boundary = UUID().uuidString
         request.addValue(apiKey.value, forHTTPHeaderField: apiKey.headerField)

@@ -23,7 +23,7 @@ public struct TextConfiguration: Codable {
 
 /// Format types for text response
 public enum FormatType: Codable {
-  case text
+  case text(TextFormatingConfiguration)
   case jsonSchema(JSONSchema, name: String? = nil)
   case jsonObject
 
@@ -33,7 +33,8 @@ public enum FormatType: Codable {
 
     switch type {
     case "text":
-      self = .text
+        let verbosity = try container.decode(TextFormatingConfiguration.self, forKey: .verbosity)
+        self = .text(verbosity)
 
     case "json_schema":
       let schema = try container.decode(JSONSchema.self, forKey: .schema)
@@ -71,5 +72,20 @@ public enum FormatType: Codable {
     case type
     case schema
     case name
+    case verbosity
   }
+}
+
+public struct TextFormatingConfiguration: Codable {
+  public let verbosity: Verbosity
+    
+   public enum CodingKeys: String, CodingKey {
+        case verbosity
+    }
+    
+   public enum Verbosity: String, Codable {
+        case low
+        case medium
+        case high
+    }
 }

@@ -7,22 +7,10 @@
 
 import Foundation
 
-// MARK: - TextConfiguration
-
-/// Text configuration options
-public struct TextConfiguration: Codable {
-  /// An object specifying the format that the model must output
-  public var format: FormatType
-
-  public init(format: FormatType) {
-    self.format = format
-  }
-}
-
 // MARK: - FormatType
 
 /// Format types for text response
-public enum FormatType: Codable {
+public enum TextConfiguration: Codable {
   case text(TextFormatingConfiguration)
   case jsonSchema(JSONSchema, name: String? = nil)
   case jsonObject
@@ -56,7 +44,6 @@ public enum FormatType: Codable {
 
     switch self {
     case .text:
-      try container.encode("text", forKey: .type)
       try container.encode("verbosity", forKey: .verbosity)
 
     case .jsonSchema(let schema, let name):

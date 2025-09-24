@@ -79,6 +79,10 @@ public enum FormatType: Codable {
 public struct TextFormatingConfiguration: Codable {
   public let verbosity: Verbosity
     
+    public init(verbosity: Verbosity) {
+        self.verbosity = verbosity
+    }
+    
    public enum CodingKeys: String, CodingKey {
         case verbosity
     }

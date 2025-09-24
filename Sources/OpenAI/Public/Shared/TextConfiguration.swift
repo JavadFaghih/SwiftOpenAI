@@ -7,64 +7,7 @@
 
 import Foundation
 
-// MARK: - FormatType
-
-/// Format types for text response
-public enum TextConfiguration: Codable {
-  case text(TextFormatingConfiguration)
-  case jsonSchema(JSONSchema, name: String? = nil)
-  case jsonObject
-
-  public init(from decoder: Decoder) throws {
-    let container = try decoder.container(keyedBy: CodingKeys.self)
-    let type = try container.decode(String.self, forKey: .type)
-
-    switch type {
-    case "text":
-        let verbosity = try container.decode(TextFormatingConfiguration.self, forKey: .verbosity)
-        self = .text(verbosity)
-
-    case "json_schema":
-      let schema = try container.decode(JSONSchema.self, forKey: .schema)
-      self = .jsonSchema(schema)
-
-    case "json_object":
-      self = .jsonObject
-
-    default:
-      throw DecodingError.dataCorruptedError(
-        forKey: .type,
-        in: container,
-        debugDescription: "Unknown format type: \(type)")
-    }
-  }
-
-  public func encode(to encoder: Encoder) throws {
-    var container = encoder.container(keyedBy: CodingKeys.self)
-
-    switch self {
-    case .text(let amount):
-        try container.encode(amount.verbosity, forKey: .verbosity)
-
-    case .jsonSchema(let schema, let name):
-      try container.encode("json_schema", forKey: .type)
-      try container.encode(name ?? "schema_response", forKey: .name)
-      try container.encode(schema, forKey: .schema)
-
-    case .jsonObject:
-      try container.encode("json_object", forKey: .type)
-    }
-  }
-
-  enum CodingKeys: String, CodingKey {
-    case type
-    case schema
-    case name
-    case verbosity
-  }
-}
-
-public struct TextFormatingConfiguration: Codable {
+public struct TextConfiguration: Codable {
   public let verbosity: Verbosity
     
     public init(verbosity: Verbosity) {

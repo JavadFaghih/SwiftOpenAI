@@ -423,7 +423,7 @@ public struct OutputTextDeltaEvent: Decodable {
   public let itemId: String
   public let outputIndex: Int
   public let contentIndex: Int
-  public let delta: String
+  public let delta: AttributedString
   public let sequenceNumber: Int?
 
   enum CodingKeys: String, CodingKey {

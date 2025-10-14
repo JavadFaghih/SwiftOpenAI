@@ -13,6 +13,11 @@ import FoundationNetworking
 // MARK: - DefaultOpenAIAzureService
 
 public final class DefaultOpenAIAzureService: OpenAIService {
+    public func responseModel(id: String) async throws -> ResponseModel {
+        fatalError(
+          "Currently, this API is not supported. We welcome and encourage contributions to our open-source project. Please consider opening an issue or submitting a pull request to add support for this feature.")
+    }
+    
   public init(
     azureConfiguration: AzureOpenAIConfiguration,
     httpClient: HTTPClient,

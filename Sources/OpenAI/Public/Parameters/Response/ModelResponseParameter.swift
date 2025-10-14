@@ -10,7 +10,7 @@ import Foundation
 // MARK: ModelResponseParameter
 
 /// [Create a model response](https://platform.openai.com/docs/api-reference/responses/create)
-public struct ModelResponseParameter: Codable {
+public struct ModelResponseParameter: Encodable {
     
     /// Initialize a new ModelResponseParameter
     public init(
@@ -32,7 +32,8 @@ public struct ModelResponseParameter: Codable {
         tools: [Tool]? = nil,
         topP: Double? = nil,
         truncation: String? = nil,
-        user: String? = nil)
+        user: String? = nil
+    )
     {
         self.input = input
         self.model = model.value
@@ -160,94 +161,62 @@ public struct ModelResponseParameter: Codable {
     /// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more.](https://platform.openai.com/docs/guides/safety-best-practices#end-user-ids)
     public var user: String?
     
-    /// Coding keys for ModelResponseParameter
-    enum CodingKeys: String, CodingKey {
-        case input
-        case model
-        case include
-        case instructions
-        case maxOutputTokens = "max_output_tokens"
-        case metadata
-        case parallelToolCalls = "parallel_tool_calls"
-        case previousResponseId = "previous_response_id"
-        case reasoning
-        case store
-        case stream
-        case temperature
-        case text
-        case toolChoice = "tool_choice"
-        case tools
-        case topP = "top_p"
-        case truncation
-        case user
-        case background
-    }
-    /// We generally recommend altering this or top_p but not both.
-    public var temperature: Double?
-    
-    /// Configuration options for a text response from the model. Can be plain text or structured JSON data. Learn more:
-    /// [Text inputs and outputs](https://platform.openai.com/docs/guides/text)
-    /// [Structured Outputs](https://platform.openai.com/docs/guides/structured-outputs)
-    public var text: TextConfiguration?
-    
-    /// How the model should select which tool (or tools) to use when generating a response.
-    /// See the tools parameter to see how to specify which tools the model can call.
-    public var toolChoice: ToolChoiceMode?
-    
-    /// An array of tools the model may call while generating a response. You can specify which tool to use by setting the tool_choice parameter.
-    /// The two categories of tools you can provide the model are:
-    /// Built-in tools: Tools that are provided by OpenAI that extend the model's capabilities, like [web search](https://platform.openai.com/docs/guides/tools-web-search) or [file search](https://platform.openai.com/docs/guides/tools-file-search0. Learn more about [built-in tools](https://platform.openai.com/docs/guides/tools).
-    /// Function calls (custom tools): Functions that are defined by you, enabling the model to call your own code. Learn more about [function calling.](https://platform.openai.com/docs/guides/function-calling)
-    public var tools: [Tool]?
-    
-    /// Defaults to 1
-    /// An alternative to sampling with temperature, called nucleus sampling, where the model considers the results of the tokens with top_p probability mass.
-    /// So 0.1 means only the tokens comprising the top 10% probability mass are considered.
-    /// We generally recommend altering this or temperature but not both.
-    public var topP: Double?
-    
+   
     /// An integer between 0 and 20 specifying the number of most likely tokens to return at each token position, each with an associated log probability.
     public var topLogprobs: Int?
-
-    /// Defaults to disabled
-    /// The truncation strategy to use for the model response.
-    /// auto: If the context of this response and previous ones exceeds the model's context window size, the
-    /// model will truncate the response to fit the context window by dropping input items in the middle of the conversation.
-    /// disabled (default): If a model response will exceed the context window size for a model, the request
-    /// will fail with a 400 error.
-    public var truncation: String?
-    
-    /// A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more.](https://platform.openai.com/docs/guides/safety-best-practices#end-user-ids)
-    public var user: String?
     
     /// Coding keys for ModelResponseParameter
     enum CodingKeys: String, CodingKey {
-        case background
-        case conversation
         case input
         case model
         case include
         case instructions
         case maxOutputTokens = "max_output_tokens"
-        case maxToolCalls = "max_tool_calls"
+        case conversation
         case metadata
         case parallelToolCalls = "parallel_tool_calls"
         case previousResponseId = "previous_response_id"
-        case prompt
-        case promptCacheKey = "prompt_cache_key"
-        case safetyIdentifier = "safety_identifier"
         case reasoning
-        case serviceTier = "service_tier"
         case store
+        case background
         case stream
-        case streamOptions = "stream_options"
         case temperature
         case text
         case toolChoice = "tool_choice"
         case tools
         case topP = "top_p"
-        case topLogprobs = "top_logprobs"
         case truncation
         case user
+       // case maxToolCalls = "max_tool_calls"
+      //  case prompt
+      //  case promptCacheKey = "prompt_cache_key"
+      //  case safetyIdentifier = "safety_identifier"
+       // case serviceTier = "service_tier"
+      //  case streamOptions = "stream_options"
+       // case topLogprobs = "top_logprobs"
+    }
+    
+    public func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(input, forKey: .input)
+        try container.encode(model, forKey: .model)
+        try container.encodeIfPresent(include, forKey: .include)
+        try container.encodeIfPresent(instructions, forKey: .instructions)
+        try container.encodeIfPresent(maxOutputTokens, forKey: .maxOutputTokens)
+        try container.encodeIfPresent(metadata, forKey: .metadata)
+        try container.encodeIfPresent(parallelToolCalls, forKey: .parallelToolCalls)
+        try container.encodeIfPresent(previousResponseId, forKey: .previousResponseId)
+        try container.encodeIfPresent(reasoning, forKey: .reasoning)
+        try container.encodeIfPresent(store, forKey: .store)
+        try container.encodeIfPresent(background, forKey: .background)
+        try container.encodeIfPresent(stream, forKey: .stream)
+        try container.encodeIfPresent(temperature, forKey: .temperature)
+        try container.encodeIfPresent(text, forKey: .text)
+        try container.encodeIfPresent(toolChoice, forKey: .toolChoice)
+        try container.encodeIfPresent(tools, forKey: .tools)
+        try container.encodeIfPresent(topP, forKey: .topP)
+        try container.encodeIfPresent(truncation, forKey: .truncation)
+        try container.encodeIfPresent(user, forKey: .user)
+        // topLogprobs is intentionally omitted from CodingKeys; include it if/when supported by the API.
     }
 }

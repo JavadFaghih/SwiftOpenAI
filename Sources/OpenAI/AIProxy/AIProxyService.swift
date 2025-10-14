@@ -12,6 +12,11 @@ private let aiproxySecureDelegate = AIProxyCertificatePinningDelegate()
 // MARK: - AIProxyService
 
 struct AIProxyService: OpenAIService {
+    func responseModel(id: String) async throws -> ResponseModel {
+        fatalError(
+          "Currently, this API is not supported. We welcome and encourage contributions to our open-source project. Please consider opening an issue or submitting a pull request to add support for this feature.")
+    }
+    
   /// Initializes an instance of the OpenAI service with the required configurations.
   ///
   /// - Parameters:
